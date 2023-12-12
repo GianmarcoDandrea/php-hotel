@@ -57,6 +57,36 @@ $hotels = [
 
 <body>
 
+    <div class="container">
+        <div class='d-flex flex-wrap justify-content-center'>
+            <h3 class="mt-4">Lista Hotel</h3>
+            <table class='table text-capitalize'>
+                <thead>
+                    <tr>
+                        <th class='col'>name</th>
+                        <th class='col'>description</th>
+                        <th class='col'>parking</th>
+                        <th class='col'>vote</th>
+                        <th class='col'>distance of center</th>
+                    </tr>
+                </thead>
+                <?php foreach ($hotels as $hotel) {
+                    $park = $hotel['parking'] ? 'yes' : 'no';
+                ?>
+                    <tr>
+                        <td><?php echo $hotel['name']; ?></td>
+                        <td><?php echo $hotel['description']; ?></td>
+                        <td><?php echo $park; ?></td>
+                        <td><?php echo $hotel['vote']; ?></td>
+                        <td><?php echo "{$hotel['distance_to_center']} km" ?></td>
+                    </tr>
+                <?php
+                }
+                ?>
+            </table>
+        </div>
+    </div>
+
 
 
 </body>
