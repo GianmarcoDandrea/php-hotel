@@ -40,6 +40,22 @@ $hotels = [
 
 ];
 
+if(isset($_GET["parking"]) && !empty($_GET["parking"])) {
+    $filter = [];
+
+    foreach($hotels as $hotel) {
+        $park = $hotel["parking"] ? "yes" : "no";
+        if($park == $_GET["parking"]) {
+            $filter[] = $hotel; 
+        }
+    }
+    $hotels = $filter;
+}
+if(isset($_GET["vote"]) && !empty($_GET["vote"])) {
+    $vote = $_GET["vote"];
+    $hotels = array_filter($hotels, fn($vote_value) => $vote_value["vote"] >= $vote);
+}   
+
 ?>
 
 <!DOCTYPE html>
@@ -73,7 +89,7 @@ $hotels = [
                     <label for="parking" class="text-center w-100 py-2 fw-bold">Parking</label>
 
                     <select name="parking" class="form-select" id="parking">
-                        <option disabled value="">Choose</option>
+                        <option value="">Choose</option>
                         <option value="yes">With Parking</option>
                         <option value="no">No Parking</option>
                     </select>
@@ -85,7 +101,7 @@ $hotels = [
                     <label for="vote" class="text-center w-100 py-2 fw-bold">Hotels Ratings</label>
 
                     <select name="vote" class="form-select" id="vote">
-                        <option disabled value="">Choose</option>
+                        <option value="">Choose</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
