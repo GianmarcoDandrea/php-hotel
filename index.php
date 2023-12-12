@@ -53,7 +53,7 @@ if (isset($_GET["parking"]) && !empty($_GET["parking"])) {
 }
 if (isset($_GET["vote"]) && !empty($_GET["vote"])) {
     $vote = $_GET["vote"];
-    $hotels = array_filter($hotels, fn ($vote_value) => $vote_value["vote"] >= $vote);
+    $hotels = array_filter($hotels, fn($hotel) => $hotel["vote"] >= $vote);
 }
 
 ?>
