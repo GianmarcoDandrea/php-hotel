@@ -48,37 +48,78 @@ $hotels = [
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="./img/icon.png">
     <title>Table Hotel</title>
-    <!-- link to css -->
-    <link rel="stylesheet" href="./css/style.css">
+
     <!-- link to bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+
+    <!-- link to css -->
+    <link rel="stylesheet" href="./css/style.css">
+
 </head>
 
 <body>
 
-    <div class="container">
-        <div class='d-flex flex-wrap justify-content-center'>
-            <h3 class="mt-4">Lista Hotel</h3>
-            <table class='table text-capitalize'>
+    <div class="container d-flex flex-column align-items-center">
+
+        <h1 class="text-center title">Find Your Hotel</h1>
+
+        <!-- FORM SECTION -->
+        <form action="index.php" method="GET" class="d-flex flex-column align-items-center w-75">
+            <div class="d-flex align-items-center justify-content-center w-100 gap-5">
+                <!-- PARKING SELECT -->
+                <div class="select-container">
+                    <label for="parking" class="text-center w-100 py-2 fw-bold">Parking</label>
+
+                    <select name="parking" class="form-select" id="parking">
+                        <option disabled value="">Choose</option>
+                        <option value="yes">With Parking</option>
+                        <option value="no">No Parking</option>
+                    </select>
+
+                </div>
+
+                <!-- VOTE SELECT -->
+                <div class="select-container">
+                    <label for="vote" class="text-center w-100 py-2 fw-bold">Hotels Ratings</label>
+
+                    <select name="vote" class="form-select" id="vote">
+                        <option disabled value="">Choose</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-dark mt-3 w-25">Send</button>
+        </form>
+
+        <!-- LIST SECTION -->
+        <div class="d-flex flex-wrap justify-content-center w-100">
+            <h3 class="pt-3">Hotel List</h3>
+            <table class="table">
                 <thead>
-                    <tr>
-                        <th class='col'>name</th>
-                        <th class='col'>description</th>
-                        <th class='col'>parking</th>
-                        <th class='col'>vote</th>
-                        <th class='col'>distance of center</th>
+                    <tr class="text-center">
+                        <th class="col">Name</th>
+                        <th class="col">Description</th>
+                        <th class="col">Parking</th>
+                        <th class="col">Vote</th>
+                        <th class="col">Distance from Center</th>
                     </tr>
                 </thead>
                 <?php foreach ($hotels as $hotel) {
-                    $park = $hotel['parking'] ? 'yes' : 'no';
+                    $park = $hotel["parking"] ? "Yes" : "No";
                 ?>
-                    <tr>
-                        <td><?php echo $hotel['name']; ?></td>
-                        <td><?php echo $hotel['description']; ?></td>
+                    <tr class="text-center">
+                        <td><?php echo $hotel["name"]; ?></td>
+                        <td><?php echo $hotel["description"]; ?></td>
                         <td><?php echo $park; ?></td>
-                        <td><?php echo $hotel['vote']; ?></td>
-                        <td><?php echo "{$hotel['distance_to_center']} km" ?></td>
+                        <td><?php echo $hotel["vote"]; ?></td>
+                        <td><?php echo "{$hotel["distance_to_center"]} km" ?></td>
                     </tr>
                 <?php
                 }
