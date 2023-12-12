@@ -40,21 +40,21 @@ $hotels = [
 
 ];
 
-if(isset($_GET["parking"]) && !empty($_GET["parking"])) {
+if (isset($_GET["parking"]) && !empty($_GET["parking"])) {
     $filter = [];
 
-    foreach($hotels as $hotel) {
+    foreach ($hotels as $hotel) {
         $park = $hotel["parking"] ? "yes" : "no";
-        if($park == $_GET["parking"]) {
-            $filter[] = $hotel; 
+        if ($park == $_GET["parking"]) {
+            $filter[] = $hotel;
         }
     }
     $hotels = $filter;
 }
-if(isset($_GET["vote"]) && !empty($_GET["vote"])) {
+if (isset($_GET["vote"]) && !empty($_GET["vote"])) {
     $vote = $_GET["vote"];
-    $hotels = array_filter($hotels, fn($vote_value) => $vote_value["vote"] >= $vote);
-}   
+    $hotels = array_filter($hotels, fn ($vote_value) => $vote_value["vote"] >= $vote);
+}
 
 ?>
 

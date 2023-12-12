@@ -1,14 +1,15 @@
+/* ROOT */
+:root {
+    --bs-border-color: #000000;
+}
+
+/* RESET */
 * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
 
-
-
-:root {
-    --bs-border-color:#000000;
-}
 .title {
     font-size: 3rem;
 }
