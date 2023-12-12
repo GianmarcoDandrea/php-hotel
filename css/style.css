@@ -5,6 +5,10 @@
 }
 
 
+
+:root {
+    --bs-border-color:#000000;
+}
 .title {
     font-size: 3rem;
 }

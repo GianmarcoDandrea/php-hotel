@@ -101,7 +101,7 @@ $hotels = [
         <!-- LIST SECTION -->
         <div class="d-flex flex-wrap justify-content-center w-100">
             <h3 class="pt-3">Hotel List</h3>
-            <table class="table">
+            <table class="table table-bordered">
                 <thead>
                     <tr class="text-center">
                         <th class="col">Name</th>
